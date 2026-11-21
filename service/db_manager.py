@@ -135,6 +135,7 @@ def add_encaissement(donateur_id, date_encaissement, montant, remarque):
     conn.commit()
     conn.close()
 
+'''
 def get_donateurs_for_select():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -144,6 +145,7 @@ def get_donateurs_for_select():
     return rows
 
 
+'''
 
 def get_encaissement_by_id(encaissement_id):
     conn = sqlite3.connect(DB_PATH)
@@ -231,13 +233,21 @@ def delete_depense(depense_id):
     conn.commit()
     conn.close()
 
+def delete_encaissement(encaissement_id):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM encaissements WHERE id_encaissement = ?", (encaissement_id,))
+    conn.commit()
+    conn.close()
 
 
 if __name__ == "__main__":
     create_tables()
     print("Base de données et tables créées avec succès.")
-    delete_all_depenses_and_reset_id()
-    delete_depense(29)
+    #delete_all_depenses_and_reset_id()
+    #delete_depense(33)
+    # total du 10 8280
+    delete_encaissement(52)
     
     
     
@@ -251,4 +261,4 @@ if __name__ == "__main__":
     
     
     
-#delete_all_depenses_and_reset_id()
+#isoler conn = sqlite3.connect(DB_PATH) et cursor = conn.cursor() pour eviter la repetion

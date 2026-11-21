@@ -1,5 +1,6 @@
 import streamlit as st
 from pathlib import Path
+import secret
 
 DB_PATH = Path("database/database.db")
 
@@ -11,11 +12,7 @@ st.set_page_config(page_title="Gestion du Ramadan", page_icon="🕌")
 # =========================
 # UTILISATEURS AUTORISÉS
 # =========================
-USERS = {
-    "admin": "1234",
-    "imam": "ramadan2026",
-    "gestionnaire": "don2026"
-}
+USERS = secret.USERS
 
 # =========================
 # INITIALISATION SESSION
